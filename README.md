@@ -1,11 +1,6 @@
-# ⚙️ Load Balancing avec HAProxy
+# Load Balancing avec HAProxy
 
-Le code complet de cet exercice est disponible sur GitHub à l’adresse suivante :  
-👉 [https://github.com/Rocklaye/HTTP_ClientServeur](https://github.com/Rocklaye/HTTP_ClientServeur)
-
----
-
-## 1. 🎯 Objectif
+## 1. Objectif
 
 Ce TP vise à démontrer les principes fondamentaux du **load balancing** à l’aide de **HAProxy**.  
 L’objectif est de répartir les requêtes entrantes entre deux serveurs Node.js simples, afin d’illustrer :
@@ -15,7 +10,7 @@ L’objectif est de répartir les requêtes entrantes entre deux serveurs Node.j
 
 ---
 
-## 2. 🏗️ Description du système
+## 2. Description du système
 
 Ce système repose sur une architecture simple mais efficace, entièrement déployée sur une machine Linux locale. Il combine trois composants principaux :
 
@@ -26,7 +21,7 @@ Deux serveurs web minimalistes ont été développés en Node.js :
 - `server2.js` écoute sur le port **3002**
 
 Chaque serveur répond à une requête HTTP avec un message distinct, permettant de vérifier visuellement la répartition des requêtes.  
-👉 Ces serveurs représentent les **backends applicatifs** du système.
+Ces serveurs représentent les **backends applicatifs** du système.
 
 ### 🔹 HAProxy — Load Balancer
 
@@ -35,7 +30,7 @@ HAProxy agit comme un **proxy inverse** et un **répartiteur de charge** :
 - Il redirige les requêtes vers les serveurs Node.js via le backend nommé `NodeSrv_back`
 - Il utilise la stratégie d'équilibrage **round-robin** pour répartir équitablement les requêtes
 
-👉 HAProxy constitue le **point d’entrée unique** du système, masquant la complexité des serveurs backend.
+HAProxy constitue le **point d’entrée unique** du système, masquant la complexité des serveurs backend.
 
 ### 🔹 Interface de supervision
 
@@ -43,11 +38,11 @@ Une interface de statistiques est exposée sur le port **8080** :
 - Accessible via : `http://localhost:8080/stats`
 - Permet de visualiser l’état des serveurs, le nombre de requêtes, les erreurs, et les métriques réseau
 
-👉 Cette interface facilite le **monitoring en temps réel** du système.
+Cette interface facilite le **monitoring en temps réel** du système.
 
 ---
 
-## 3. 🛠️ Configuration de l’environnement
+## 3. Configuration de l’environnement
 
 ### 🔸 Installation de HAProxy et Node.js
 
@@ -94,7 +89,7 @@ listen stats
 
 Redémarrage du service : `sudo systemctl restart haproxy`
 
-## 4. 🧪 Test
+## 4. Test
 
 Nous avons effectué un test en envoyant 10 requêtes HTTP vers notre application Node.js :
 
@@ -102,7 +97,7 @@ Nous avons effectué un test en envoyant 10 requêtes HTTP vers notre applicatio
 
 Puis nous avons accédé à l’interface de statistiques : `http://localhost:8080/stats`
 
-## 5. 📊 Résultats
+## 5. Résultats
 
 - Les réponses s’alternent entre les deux serveurs
 - Chacun a reçu 5 sessions de connexion
