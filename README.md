@@ -54,10 +54,10 @@ Cette interface facilite le **monitoring en temps réel** du système.
 
 Deux serveurs web simples ont été créés (voir code source).
 Ils sont lancés avec les commandes suivantes :
-
+```bash
 node server1.js
 node server2.js
-
+```
 
 Chaque serveur peut être démarré dans un terminal différent afin de visualiser les logs de requêtes en temps réel.
 Les réponses retournées permettent d’identifier clairement depuis quel serveur la requête a été traitée.
@@ -66,7 +66,7 @@ Les réponses retournées permettent d’identifier clairement depuis quel serve
 
 Modification du fichier de configuration :
 
-sudo nano /etc/haproxy/haproxy.cfg
+`sudo nano /etc/haproxy/haproxy.cfg`
 
 
 Contenu ajouté :
